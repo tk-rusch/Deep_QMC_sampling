@@ -43,4 +43,4 @@ In the source folder run
 
 **max_learning_iterations**: integer to indicate the maximum amount of learning iterations
 
-
+The results are stored in data/<experiment>/results.
