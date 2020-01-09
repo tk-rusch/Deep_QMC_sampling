@@ -12,3 +12,8 @@ pip install pytorch
 pip install pandas
 pip install filelock 
 ```
+
+## Neural network training: Ensemble and retraining
+
+In the source folder run
+`python train_networks.py 'experiment' 'training type' 'sampling method' 'input dimension' 'maximum learning iterations'`
