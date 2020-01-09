@@ -14,10 +14,10 @@ def training_set_sizes(exp_type):
         return (np.logspace(5,11,7,base=2).astype(int)).tolist()
 
 if __name__ == '__main__':
-    script, id, exp_type, train_type, max_epochs = argv
+    script, id, exp_type, train_type, input_dim, sampling_method, max_epochs = argv
 
     training_set_sizes = training_set_sizes(exp_type)
-    model, set_size, dimension, sampling_method = \
-        job_id_to_parameters(int(id)-1,training_set_sizes,train_type,exp_type)
+    model, set_size = \
+        job_id_to_parameters(int(id)-1,training_set_sizes,train_type,exp_type,sampling_method,int(input_dim))
 
-    train_NN(model,set_size,dimension,train_type,sampling_method,int(max_epochs),exp_type)
+    train_NN(model,set_size,int(input_dim),train_type,sampling_method,int(max_epochs),exp_type)
