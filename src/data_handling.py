@@ -1,4 +1,3 @@
-import numpy as np
 import torch
 import os
 import pandas as pd
@@ -29,7 +28,7 @@ def reader(sampling_method,dim,N,exp_type):
     return train_x, train_y, test_x, test_y
 
 
-def writer(model,N,train_type,exp_type,sampling_method,error,gen_error):
+def writer(model,N,train_type,exp_type,sampling_method,train_error,gen_error):
     cwd = os.getcwd()
 
     if (train_type == 'ensemble'):
@@ -40,7 +39,7 @@ def writer(model,N,train_type,exp_type,sampling_method,error,gen_error):
         lock.acquire()
         try:
             open(file_path, "a").write(str(model.learning_rate) + ' ' + str(model.regression_param) + ' ' + str(model.width) + ' ' +
-                                       str(model.depth) + ' ' + str(error) + ' ' + str(gen_error) + '\n')
+                                       str(model.depth) + ' ' + str(train_error) + ' ' + str(gen_error) + '\n')
         finally:
             lock.release(force=True)
 
@@ -52,6 +51,6 @@ def writer(model,N,train_type,exp_type,sampling_method,error,gen_error):
         lock.acquire()
         try:
             open(file_path, "a").write(str(model.learning_rate) + ' ' + str(model.regression_param) + ' ' + str(model.width) + ' ' +
-                                       str(model.depth) + ' ' + str(error) + ' ' + str(gen_error) + '\n')
+                                       str(model.depth) + ' ' + str(train_error) + ' ' + str(gen_error) + '\n')
         finally:
             lock.release(force=True)
