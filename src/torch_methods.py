@@ -33,14 +33,14 @@ def NN_model(layer_sizes, activationFunction, batch_norm=True, Xavier_init=True)
 
     return model
 
-def train_NN(model_params,N,dim,train_type,sampling_method,max_epochs,exp_type):
+def train_NN(model_params,set_size,dim,train_type,sampling_method,max_epochs,exp_type):
 
     layer_sizes = [dim]
     for i in range(model_params.depth):
         layer_sizes.append(model_params.width)
     layer_sizes.append(1)
 
-    train_x, train_y, test_x, test_y = data_handling.reader(sampling_method, dim, N, exp_type)
+    train_x, train_y, test_x, test_y = data_handling.reader(sampling_method, dim, set_size, exp_type)
 
     model = NN_model(layer_sizes, nn.Sigmoid)
 
@@ -61,4 +61,4 @@ def train_NN(model_params,N,dim,train_type,sampling_method,max_epochs,exp_type):
     output_test = model(test_x.float())
     generalization_error = test_objective(output_test, test_y.float()).item()
 
-    data_handling.writer(model_params,N,train_type,exp_type,sampling_method,train_error,generalization_error)
+    data_handling.writer(model_params,set_size,train_type,exp_type,sampling_method,train_error,generalization_error,dim)

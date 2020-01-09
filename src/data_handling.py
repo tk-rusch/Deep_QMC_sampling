@@ -3,7 +3,6 @@ import os
 import pandas as pd
 from filelock import Timeout, FileLock
 
-
 def reader(sampling_method,dim,N,exp_type):
     cwd = os.getcwd()
     if (sampling_method == "QMC"):
@@ -28,12 +27,12 @@ def reader(sampling_method,dim,N,exp_type):
     return train_x, train_y, test_x, test_y
 
 
-def writer(model,N,train_type,exp_type,sampling_method,train_error,gen_error):
+def writer(model,set_size,train_type,exp_type,sampling_method,train_error,gen_error,dim):
     cwd = os.getcwd()
 
     if (train_type == 'ensemble'):
-        file_path = cwd + '/../data/' + exp_type + '/results/' + sampling_method + '/ensemble/results_' + str(
-            int(N)) + '.txt'
+        file_path = cwd + '/../data/' + exp_type + '/results/' + sampling_method + \
+                    '/ensemble/results_dim_' + str(dim) + '_N_' + str(set_size) + '.txt'
 
         lock = FileLock(file_path + '.lock', timeout=100)
         lock.acquire()
@@ -44,9 +43,8 @@ def writer(model,N,train_type,exp_type,sampling_method,train_error,gen_error):
             lock.release(force=True)
 
     else:
-        file_path = cwd + '/../data/' + exp_type + '/results/' + sampling_method + '/retrain/results_' + str(
-            int(N)) + '.txt'
-
+        file_path = cwd + '/../data/' + exp_type + '/results/' + sampling_method + \
+                    '/retrain/results_dim_' + str(dim) + '_N_' + str(set_size) + '.txt'
         lock = FileLock(file_path + '.lock', timeout=100)
         lock.acquire()
         try:
