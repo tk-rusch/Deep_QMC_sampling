@@ -1,5 +1,5 @@
-# Enhancing accuracy of deep learning algorithmsby training with low-discrepancy sequences
-This repository contains the implementation to reproduce the numerical experiments of the paper "Enhancing accuracy of deep learning algorithmsby training with low-discrepancy sequences"
+# Enhancing accuracy of deep learning algorithms by training with low-discrepancy sequences
+This repository contains the implementation to reproduce the numerical experiments of the paper "Enhancing accuracy of deep learning algorithms by training with low-discrepancy sequences"
 
 
 ## Installation
