@@ -1,5 +1,5 @@
-# Enhanced Generalization in Deep Learning using Quasi-Monte Carlo Sampling
-This repository contains the implementation to reproduce the numerical experiments of the paper "Enhanced Generalization in Deep Learning using Quasi-Monte Carlo Sampling"
+# Enhancing accuracy of deep learning algorithmsby training with low-discrepancy sequences
+This repository contains the implementation to reproduce the numerical experiments of the paper "Enhancing accuracy of deep learning algorithmsby training with low-discrepancy sequences"
 
 
 ## Installation
